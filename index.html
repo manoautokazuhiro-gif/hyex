@@ -71,7 +71,8 @@ p{margin:0}
 section.band{padding-block:96px}
 section.band.alt{background:var(--slate)}
 .head{display:grid;gap:12px;margin-bottom:48px;max-width:46em}
-.head h2{font-size:clamp(28px,4vw,42px);font-weight:700}
+.head h2{font-size:clamp(28px,4vw,42px);font-weight:700;overflow-wrap:anywhere}
+.head > *{min-width:0}
 .head p{font-size:17px}
 
 /* pillars */
@@ -178,6 +179,11 @@ td{color:var(--mist)}
 .steps-mode span b{font-family:var(--num);color:var(--red);margin-left:6px}
 @media (max-width:860px){.row2,.row2.rev{grid-template-columns:1fr}.row2.rev .txt{order:0}}
 
+.safety th{width:26%}
+.safety td:last-child{width:1%;white-space:nowrap}
+@media (max-width:520px){.safety th,.safety td{padding:10px 8px;font-size:14px}.safety th{width:auto;white-space:nowrap}.safety .tag{font-size:12px;padding:5px 8px}}
+.tag{display:inline-block;font-size:13px;line-height:1;padding:6px 10px;border-radius:999px;background:var(--panel);color:var(--snow)}
+.tag.opt{background:transparent;border:1px solid var(--red);color:var(--snow)}
 .roles{margin-top:8px}
 .roles th{width:24%}
 
@@ -196,10 +202,10 @@ td{color:var(--mist)}
 @media (max-width:760px){.rooms{grid-template-columns:1fr}}
 
 /* steps */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s;border-top:1px solid var(--line)}
-.steps li{list-style:none;padding:26px 22px 26px 0;display:grid;gap:8px;align-content:start;border-right:1px solid var(--line);padding-left:22px;min-width:0}
-.steps li:first-child{padding-left:0}
-.steps li:last-child{border-right:none}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s;border-top:1px solid var(--line)}
+.steps li{list-style:none;padding:26px 22px;display:grid;gap:8px;align-content:start;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.steps li:nth-child(3n+1){padding-left:0}
+.steps li:nth-child(3n){border-right:none}
 .steps li::before{counter-increment:s;content:"0" counter(s);font-family:var(--num);font-size:32px;font-weight:700;color:var(--red);line-height:1}
 .steps h3{font-size:18px}
 .steps p{font-size:14px;line-height:1.7}
@@ -245,7 +251,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <p class="lead">低酸素をつくる装置、室内環境の制御、利用者の見える化、そしてスマホからの遠隔管理まで。HYEXは高地トレーニング施設に必要なものを、ひとつのシステムとして提供します。</p>
     <div class="readout" aria-label="主な数値">
       <div><small>設置</small><strong class="num">1<em>SETで完結</em></strong></div>
-      <div><small>コンプレッサー稼働時間</small><strong class="num">最大50<em>%削減</em></strong></div>
+      <div><small>方式</small><strong class="num">PSA<em>＋メンブレン</em></strong></div>
     </div>
   </div>
 </section>
@@ -259,8 +265,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="pillars">
       <div><span class="n">01</span><h3>2種類の低酸素システム</h3><p>分離膜式の基本モデルと、PSA＋メンブレンのハイブリッドモデル。</p></div>
       <div><span class="n">02</span><h3>ハイブリッド独自技術</h3><p>PSA・メンブレン・窒素貯蔵タンクで、安定供給と省エネを両立。</p></div>
-      <div><span class="n">03</span><h3>高CO₂対策・環境制御</h3><p>酸素濃度を調整したガス供給と、施設に合わせた換気制御。</p></div>
-      <div><span class="n">04</span><h3>店舗別オリジナルセッティング</h3><p>気密性・利用人数・設置環境に合わせて最適化。</p></div>
+      <div><span class="n">03</span><h3>高CO₂対策・環境制御</h3><p>換気設備と独自のハイブリッド制御で、換気設備の設置が難しい施設にも対応。</p></div>
+      <div><span class="n">04</span><h3>施設に合わせた個別設計</h3><p>規模・気密性・利用人数・使用目的に合わせて機器構成と運転条件を設計。</p></div>
     </div>
   </div>
 </section>
@@ -282,24 +288,24 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="core"><strong>HYEX</strong><small>運転制御</small></div>
       <div class="arrow">OUTPUT</div>
       <div class="out">
-        <div><h3>高効率酸素制御</h3><p>標高を維持しつつ、コンプレッサー稼働時間を最大50%削減。</p></div>
-        <div><h3>CO₂濃度に合わせたエコ運転</h3><p>利用者が少ないときは出力を下げ、圧縮機を順番に動かして休ませる時間を自動で確保。</p></div>
+        <div><h3>室内酸素濃度の安定制御</h3><p>室内の酸素濃度を監視し、設定した低酸素環境を維持するよう自動制御。</p></div>
+        <div><h3>エコモードによる省エネルギー運転</h3><p>ガス供給制御と窒素貯蔵タンクを組み合わせ、コンプレッサーの不要な運転を抑制。</p></div>
       </div>
     </div>
 
     <div>
       <div>
-        <h3 style="font-size:20px;margin-bottom:14px">ハイブリッドモデルの強み</h3>
+        <h3 style="font-size:20px;margin-bottom:14px">ハイブリッドシステムの特徴</h3>
         <div class="tablewrap">
         <table class="strengths">
-          <tr><th>PSA＋メンブレン</th><td>2つの分離方式の長所を組み合わせたハイブリッド構成</td></tr>
-          <tr><th>安定供給</th><td>PSAの安定した生成濃度を活用</td></tr>
-          <tr><th>起動時の補完</th><td>PSAの起動待機時間をメンブレンが補完</td></tr>
-          <tr><th>省エネルギー</th><td>エコモードと窒素貯蔵タンクの組み合わせで無駄な運転を削減</td></tr>
-          <tr><th>高CO₂対策</th><td>酸素濃度を調整したガスの供給によってCO₂濃度を低減</td></tr>
-          <tr><th>換気連動制御</th><td>施設の気密性に合わせて換気設備を制御</td></tr>
-          <tr><th>酸素濃度の安定性</th><td>室内の酸素濃度変動を抑えた運転</td></tr>
-          <tr id="setting"><th>オリジナル設定</th><td>店舗の規模・気密性・利用人数に合わせたセッティング</td></tr>
+          <tr><th>ハイブリッド構成</th><td>PSA方式とメンブレン方式を組み合わせた独自の低酸素システム</td></tr>
+          <tr><th>安定供給</th><td>2種類の分離方式の特徴を活用し、効率的に低酸素ガスを供給</td></tr>
+          <tr><th>起動時の補完</th><td>PSAの起動待機時間をメンブレン方式で補完</td></tr>
+          <tr><th>省エネルギー</th><td>エコモードと窒素貯蔵タンクを活用し、コンプレッサーの不要な運転を削減</td></tr>
+          <tr><th>高CO₂対策</th><td>換気設備と独自のハイブリッド流量制御を活用し、CO₂濃度の上昇を抑制</td></tr>
+          <tr><th>換気連動制御</th><td>施設の気密性や設備条件に合わせ、換気設備とガス供給を最適に制御</td></tr>
+          <tr><th>酸素濃度の安定性</th><td>室内の酸素濃度を監視し、設定濃度を維持するよう自動制御</td></tr>
+          <tr id="setting"><th>オリジナル設定</th><td>店舗の規模・気密性・利用人数・使用目的に合わせた個別設定</td></tr>
         </table>
         </div>
       </div>
@@ -307,10 +313,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
     <div class="features">
       <div><small>低投資</small><h3>機器サイズを抑えた設計</h3><p>運転効率を高め、必要以上に大きなコンプレッサーを使わずに済むため、初期投資を抑えられます。</p></div>
-      <div><small>電気代</small><h3>必要なときだけ作動</h3><p>無駄な運転時間を大幅に削減し、電気代を抑えます。</p></div>
+      <div><small>省エネルギー</small><h3>エコモードによる省エネルギー運転</h3><p>室内環境に合わせたガス供給制御と窒素貯蔵タンクを組み合わせ、効率的な運転を実現。必要な低酸素環境を維持しながら、コンプレッサーの不要な運転を抑制し、消費電力の削減を図ります。</p></div>
       <div><small>省スペース</small><h3>1 SETで完結</h3><p>部屋が大きくなっても台数を増やさず、機械1セットの選定変更で対応できます。</p></div>
-      <div><small>効率化</small><h3>稼働時間を最大50%削減</h3><p>ハイエックス運転制御がコンプレッサーの無駄な稼働をカット。機器寿命の延長にもつながります。</p></div>
-      <div><small>高耐久性</small><h3>部品寿命を最大化</h3><p>コンプレッサーを順番に稼働・停止させ、連続運転時間を減らして発熱や摩耗を抑えます。</p></div>
+      <div><small>安定制御</small><h3>室内酸素濃度の自動安定制御</h3><p>室内の酸素濃度をリアルタイムに監視し、設定した低酸素環境を維持するようガス供給を自動制御。利用人数の変化やドアの開閉などによる変動にも対応し、安定したトレーニング環境を提供します。</p></div>
+      <div><small>耐久性</small><h3>機器への負荷を軽減する運転制御</h3><p>エコモードによってコンプレッサーの不要な連続運転を抑制し、機器への負荷を軽減。運転時間を適切に管理することで、長期的な設備運用に配慮した設計としています。</p></div>
+      <div><small>柔軟性</small><h3>換気が難しい施設にも対応</h3><p>換気設備の有無や設置環境に合わせて、最適なガス供給方式と制御方法を選択します。</p></div>
     </div>
   </div>
 </section>
@@ -318,18 +325,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <section class="band" id="co2">
   <div class="wrap co2">
     <div class="text">
-      <p class="eyebrow">High CO₂ Control Mode</p>
-      <h2 style="font-size:clamp(28px,4vw,42px)">独自の高CO₂対策モード</h2>
-      <p>低酸素ルームでは、利用人数や運動量によって室内のCO₂濃度が上昇します。</p>
-      <p>当社のハイブリッドシステムでは、メンブレン方式を活用し、<strong>室内の酸素濃度に合わせて供給ガスの濃度と流量を調整。</strong>低酸素環境への影響を抑えながら、CO₂濃度の低減を図ります。</p>
-      <p>さらに、施設ごとの気密性や換気条件に合わせた制御にも対応。気密性の高い施設では換気設備との連動制御を組み合わせ、漏気のある施設ではその特性を考慮した運転設定を行います。</p>
-      <p><strong>施設ごとの環境に合わせ、酸素濃度の安定性とCO₂対策を両立する独自の環境制御システムです。</strong></p>
+      <p class="eyebrow">High CO₂ Control</p>
+      <h2 style="font-size:clamp(28px,4vw,42px)">独自の高CO₂対策システム</h2>
+      <p>低酸素トレーニングルームでは、利用人数や運動強度によって室内のCO₂濃度が上昇します。</p>
+      <p>HYEXでは、<strong>換気設備と独自のハイブリッド制御技術を活用し、施設の環境に合わせたCO₂対策</strong>を行います。</p>
+      <p>換気設備を利用できる施設では、換気によって室内のCO₂濃度の上昇を抑制します。</p>
+      <p>換気設備の設置が難しい施設では、ハイブリッドユニットの供給ガス濃度と流量を最適化することで、低酸素環境を維持しながら室内へのガス供給量を増加させ、CO₂を含む室内空気の排出を促進します。</p>
+      <p><strong>施設の広さ・気密性・利用人数・設備条件に合わせて最適な方式を選択し、安定した低酸素環境とCO₂対策を両立します。</strong></p>
     </div>
-    <div class="gauge" aria-label="施設条件ごとの制御の考え方">
-      <div class="row"><span>気密性の高い施設</span><div class="lbl"><b>換気設備と連動制御</b></div><div class="bar"><i style="width:82%;background:var(--ice)"></i></div></div>
-      <div class="row"><span>漏気のある施設</span><div class="lbl"><b>漏気特性を考慮した運転設定</b></div><div class="bar"><i style="width:58%;background:var(--ice)"></i></div></div>
-      <div class="row"><span>利用人数・運動量が多いとき</span><div class="lbl"><b>供給ガスの濃度と流量を調整</b></div><div class="bar"><i style="width:70%;background:var(--red)"></i></div></div>
-      <p class="caption" style="margin:0">バーは制御のイメージで、数値を示すものではありません。</p>
+    <div class="gauge" aria-label="施設条件ごとのCO₂対策の考え方">
+      <div class="row"><span>換気設備を利用できる施設</span><div class="lbl"><b>換気でCO₂濃度の上昇を抑制</b></div><div class="bar"><i style="width:82%;background:var(--ice)"></i></div></div>
+      <div class="row"><span>換気設備の設置が難しい施設</span><div class="lbl"><b>ハイブリッド制御で室内空気の排出を促進</b></div><div class="bar"><i style="width:70%;background:var(--red)"></i></div></div>
+      <div class="row"><span>広さ・気密性・利用人数・設備条件</span><div class="lbl"><b>施設ごとに最適な方式を選択</b></div><div class="bar"><i style="width:58%;background:var(--ice)"></i></div></div>
+      <p class="caption" style="margin:0">バーは制御のイメージで、数値を示すものではありません。実際の排気経路と必要な空気交換量は、施設ごとの設計で確認します。</p>
     </div>
   </div>
 </section>
@@ -338,12 +346,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Altitude &amp; Oxygen Monitor</p>
-      <h2>標高ソフト<br>部屋の「いまの標高」と、<wbr>利用者の体をひと目で</h2>
-      <p>センサーで測った酸素濃度から、何メートルの山と同じ空気かを自動で計算して大きく表示。利用者のSpO₂と脈拍も同じ画面に並べられます（オプション）。</p>
+      <h2>リアルタイム<wbr>換算標高モニター<br>部屋の「いまの換算標高」と、<wbr>利用者の体をひと目で</h2>
+      <p>室内の酸素濃度をリアルタイムに計測し、常圧低酸素環境における換算標高を表示します。利用者は、現在の酸素濃度と標高相当値を直感的に確認できます。オプションのSpO₂・脈拍センサーを組み合わせることで、利用者の身体状態も同じ画面に表示できます。</p>
     </div>
     <div class="soft-grid">
       <figure style="margin:0">
-        <div class="shot vidbox"><video id="demo" src="img/altitude-demo-720.mp4" poster="img/soft-demo-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="標高ソフトのデモ画面。雪山を背景に換算標高・O2・CO2と、利用者4人のSpO2・脈拍が動いて表示される" style="width:100%;display:block"></video></div>
+        <div class="shot vidbox"><video id="demo" src="img/altitude-demo-720.mp4" poster="img/soft-demo-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="換算標高モニターのデモ画面。雪山を背景に換算標高・O2・CO2と、利用者4人のSpO2・脈拍が動いて表示される" style="width:100%;display:block"></video></div>
         <figcaption class="figcap">実際の画面の動き（デモ表示）。部屋の環境と利用者のSpO₂・脈拍がリアルタイムに更新されます</figcaption>
       </figure>
       <div class="stack">
@@ -359,21 +367,43 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     </div>
     <ul class="checks">
       <li><b>換算標高表示</b>　背景に山の写真や動画を設定。O₂・CO₂も同時に表示</li>
-      <li><b>最大8人を同時に</b>　当社厳選のBluetoothセンサーを付けるだけで画面にカードが現れる</li>
-      <li><b>安全の見守り</b>　SpO₂が下がると色で知らせ、部屋の酸素が下がりすぎたら音声で案内</li>
-      <li><b>自動で記録</b>　SpO₂・脈拍・カロリーと部屋のO₂・CO₂・標高を日ごとにCSV保存</li>
+      <li><b>最大8人を同時に（オプション）</b>　当社厳選のBluetoothセンサーを付けるだけで画面にカードが現れる</li>
+      <li><b>安全の見守り</b>　部屋の酸素が下がりすぎたら音声で案内。SpO₂が下がると色で知らせる（オプション）</li>
+      <li><b>自動で記録</b>　部屋のO₂・CO₂・換算標高と、SpO₂・脈拍・カロリー（オプション）を日ごとにCSV保存</li>
       <li><b>自由なレイアウト</b>　ドラッグで配置。縦型モニターにも対応</li>
     </ul>
     <p style="margin-top:40px;font-size:16px;color:var(--snow)">SpO₂・脈拍の表示はオプションです。センサーは、当社が厳選した複数メーカーの機器が接続可能です。</p>
   </div>
 </section>
 
-<section class="band" id="remote">
+<section class="band" id="safety">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Safety Monitoring</p>
+      <h2>安全管理を支援する監視システム</h2>
+      <p>HYEXでは、室内の酸素濃度やCO₂濃度を監視し、低酸素環境の適切な管理を支援します。設備の運転状態の確認や異常通知機能に加え、オプションのSpO₂・脈拍モニタリングなどを組み合わせることで、施設運営者による安全管理をサポートします。</p>
+    </div>
+    <div class="tablewrap">
+    <table class="safety">
+      <tr><th>酸素濃度監視</th><td>室内の酸素濃度をリアルタイムに監視</td><td><span class="tag">標準</span></td></tr>
+      <tr><th>CO₂濃度監視</th><td>室内のCO₂濃度を監視</td><td><span class="tag">標準</span></td></tr>
+      <tr><th>異常通知</th><td>設定条件に応じて異常を通知</td><td><span class="tag">標準</span></td></tr>
+      <tr><th>運転状態監視</th><td>設備の運転状態を確認</td><td><span class="tag">標準</span></td></tr>
+      <tr><th>SpO₂監視</th><td>利用者の血中酸素飽和度を表示</td><td><span class="tag opt">オプション</span></td></tr>
+      <tr><th>脈拍監視</th><td>利用者の脈拍を表示</td><td><span class="tag opt">オプション</span></td></tr>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="remote">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">HYEX remote system</p>
-      <h2>低酸素ルームを、PC・スマホからどこでも。</h2>
-      <p>今の制御盤はそのまま、店内にPCを1台足すだけ。センサー → 制御盤→ 管理サーバー → PC・スマホのブラウザ、とつながります。</p>
+      <h2>PC・スマートフォンによる遠隔管理</h2>
+      <p>HYEXでは、専用の管理システムを使用することで、店舗内外から設備の運転状況を確認できます。酸素濃度・CO₂濃度・換算標高の確認に加え、運転・停止・スケジュール管理などに対応します。複数ルームの一括管理や、メーカーによる遠隔サポートにも対応しています。</p>
+      <p>新規導入では制御盤と管理システムを合わせてご提案します。既存の対応制御盤にも追加導入が可能です。</p>
+      <p class="caption" style="margin:0">※対応機能は導入設備の仕様によって異なります。</p>
     </div>
     <div class="remote-hero">
       <figure style="margin:0">
@@ -405,19 +435,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <h3>1週間の運転予定を、カレンダーで組む</h3>
           <ul>
             <li>「毎週 月・水・金 9:00」も「10月20日だけ」も登録可能</li>
-            <li>標高ごとに色分けした帯で週表示。タップで編集</li>
+            <li>換算標高ごとに色分けした帯で週表示。タップで編集</li>
             <li>全ルーム・制御盤単位で一括予約。失敗した予約は赤で警告</li>
           </ul>
         </div>
-        <div class="shot"><img src="img/remote-schedule.jpg" alt="運転スケジュールの週表示。ルームごとに標高の色分けされた帯が並ぶ"></div>
+        <div class="shot"><img src="img/remote-schedule.jpg" alt="運転スケジュールの週表示。ルームごとに換算標高の色分けされた帯が並ぶ"></div>
       </div>
       <div class="row2">
         <div class="txt">
           <p class="eyebrow">運転モード</p>
-          <h3>標高を時間で自動に切り替える「モード」</h3>
-          <p>段階ごとに標高と時間を決めておけば、ボタン1つで最後まで自動運転。最後の段階が終わると自動で停止します。</p>
+          <h3>換算標高を時間で自動に切り替える「モード」</h3>
+          <p>段階ごとに換算標高と時間を決めておけば、ボタン1つで最後まで自動運転。最後の段階が終わると自動で停止します。</p>
           <div class="steps-mode" aria-label="例：ヒルクライム"><span>3000M<b>30分</b></span>→<span>1500M<b>30分</b></span>→<span>0M<b>5分</b></span>→<span>自動停止</span></div>
-          <p class="caption" style="margin:0">例：ヒルクライム。標高と時間は店舗ごとに自由に設定できます。</p>
+          <p class="caption" style="margin:0">例：ヒルクライム。換算標高と時間は店舗ごとに自由に設定できます。</p>
         </div>
         <div class="shot" style="max-width:420px;justify-self:center"><img src="img/remote-mode.jpg" alt="モード編集画面。モード名ヒルクライム、段階1〜3のパターンと分数"></div>
       </div>
@@ -429,7 +459,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div class="tablewrap">
         <table class="roles">
           <tr><th>閲覧</th><td>状態・予約・ログを見るだけ（パスワード不要）</td></tr>
-          <tr><th>スタッフ</th><td>運転・停止・標高変更・予約・モード開始</td></tr>
+          <tr><th>スタッフ</th><td>運転・停止・換算標高の変更・予約・モード開始</td></tr>
           <tr><th>管理者</th><td>上記＋ルーム名・モード・制御盤の設定、スタッフ用パスワードの変更</td></tr>
           <tr><th>メーカー</th><td>当社による遠隔保守（お客様の許可制）</td></tr>
         </table>
@@ -437,8 +467,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <p class="caption">すべての操作を、いつ・どの端末から・誰が行ったか日ごとに記録します。</p>
       </div>
       <div>
-        <h3 style="font-size:20px;margin-bottom:14px">2ルームから最大10ルームまで</h3>
-        <p style="font-size:15px">制御盤は画面から追加。IPアドレスとルーム名を入れるだけで、サーバーは1台のままです。制御盤2台・4ルーム構成で稼働しています。低酸素（高地）と酸素プラス（高濃度酸素）の両方の運転に対応します。</p>
+        <h3 style="font-size:20px;margin-bottom:14px">複数ルームを一括管理</h3>
+        <p style="font-size:15px">制御盤は画面から追加。IPアドレスとルーム名を入れるだけで、サーバーは1台のままです。低酸素（高地）と酸素プラス（高濃度酸素）の両方の運転に対応します。</p>
       </div>
     </div>
 
@@ -453,17 +483,65 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
-<section class="band alt" id="rooms">
+<section class="band" id="design">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Custom Design</p>
+      <h2>施設ごとに最適な低酸素環境を設計</h2>
+      <p>HYEXでは、店舗の規模・気密性・利用人数・使用目的に合わせて、低酸素システムの機器構成と運転条件を個別に設計します。施設の換気設備や設置環境に応じて、最適なガス供給方式と制御方法を選択します。新規施設への導入だけでなく、既存施設への設置にも対応します。</p>
+    </div>
+    <h3 style="font-size:20px">主な設計項目</h3>
+    <ul class="checks" style="margin-top:20px">
+      <li><b>店舗面積・室内容積</b></li>
+      <li><b>気密性能</b></li>
+      <li><b>利用人数</b></li>
+      <li><b>運動内容</b></li>
+      <li><b>目標酸素濃度</b></li>
+      <li><b>換気設備の設置条件</b></li>
+      <li><b>機械室・電源設備</b></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band alt" id="running">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:0">
+      <p class="eyebrow">Running Cost</p>
+      <h2>長期的な運用コストを考慮した設計</h2>
+      <p>HYEXでは、施設に必要なガス供給能力に合わせた機器選定と、エコモードによる運転制御を組み合わせることで、効率的な設備運用を実現します。</p>
+      <p>導入時の機器費用だけでなく、電気代やメンテナンス費用を含めた長期的な運用コストを考慮した設計を行います。</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="rooms">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Installation</p>
       <h2>設置イメージ</h2>
     </div>
     <div class="rooms">
-      <figure><img src="img/room-studio.jpg" alt="ランニングマシンとバイクが並ぶ低酸素トレーニングスタジオ"><figcaption>マシンの前のモニターで、走りながら標高と体の状態を確認</figcaption></figure>
+      <figure><img src="img/room-studio.jpg" alt="ランニングマシンとバイクが並ぶ低酸素トレーニングスタジオ"><figcaption>マシンの前のモニターで、走りながら換算標高と体の状態を確認</figcaption></figure>
       <figure><img src="img/room-glass.jpg" alt="ガラス張りの低酸素ルーム"><figcaption>ガラス越しにスタッフも見守れる</figcaption></figure>
       <figure><img src="img/room-reception.jpg" alt="受付からガラス越しに見える低酸素ルーム"><figcaption>受付からも全員の状態がわかる</figcaption></figure>
     </div>
+  </div>
+</section>
+
+<section class="band alt" id="flow">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Flow</p>
+      <h2>導入までの流れ</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>お問い合わせ・ご相談</h3><p>施設の規模や使用目的、ご希望の低酸素環境を確認します。</p></li>
+      <li><h3>現地調査</h3><p>設置場所・気密性・換気設備・電源などを確認します。</p></li>
+      <li><h3>システム設計・お見積もり</h3><p>施設に合わせた機器構成と運転制御を設計します。</p></li>
+      <li><h3>施工・機器設置</h3><p>低酸素設備・配管・電気配線・制御機器などを施工します。</p></li>
+      <li><h3>試運転・調整</h3><p>酸素濃度・CO₂濃度・ガス供給量などを確認し、施設に合わせて調整します。</p></li>
+      <li><h3>運用開始・アフターサポート</h3><p>操作説明と運用管理のご案内を行います。</p></li>
+    </ol>
   </div>
 </section>
 
